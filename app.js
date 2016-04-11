@@ -18,6 +18,7 @@ var http = require('http');
 var app = express();
 
 var forceSSL = require('express-force-ssl');
+var helmet = require('helmet');
 
 var httpsSettings = require('../https/settings.js');
 var fs = require('fs');
@@ -32,7 +33,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+app.use(helmet());
 app.use(forceSSL);
 
 app.use(logger('dev'));
